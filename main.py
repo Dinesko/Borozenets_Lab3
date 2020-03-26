@@ -2,7 +2,7 @@ import numpy as np
 import random
 from numpy.linalg import solve
 from scipy.stats import f, t
-from functools import partial
+from functools import partial #В 129 і 169 стрічці коду ми використовуємо partial для того щоб створити нову функцію з використанням старої
 
 x_range = [(-20, 30), (-25, 10), (-25, -20)]
 x_aver_max = (30 + 10 - 20)/ 3
@@ -126,7 +126,7 @@ def main(n, m):
 
     ###
     ### табличні значення
-    student = partial(t.ppf, q=1-0.025)
+    student = partial(t.ppf, q=1-0.025) # За допомогою partial використовуємо функцію t.ppf з модуля scipy.stats + аргумент q
     t_student = student(df=f3)
 
     G_kr = cohren(f1, f2)
@@ -166,7 +166,7 @@ def main(n, m):
     f4 = n - d
     F_p = kriteriy_fishera(y, y_aver, y_new, n, m, d)
 
-    fisher = partial(f.ppf, q=1 - 0.05)
+    fisher = partial(f.ppf, q=1 - 0.05) # За допомогою partial використовуємо функцію f.ppf з модуля scipy.stats + аргумент q
     f_t = fisher(dfn=f4, dfd=f3) # табличне знач
 
     print('\nПеревірка адекватності за критерієм Фішера')
